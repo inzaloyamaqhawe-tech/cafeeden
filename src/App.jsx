@@ -2,12 +2,66 @@ import { useMemo, useState } from 'react'
 import './App.css'
 
 const MENU = [
-  { id: 1, name: 'Loaded Kota', price: 65, tag: 'Street Favorite' },
-  { id: 2, name: 'Grilled Chicken Wrap', price: 78, tag: 'Chef Pick' },
-  { id: 3, name: 'Classic Beef Burger', price: 89, tag: 'Top Seller' },
-  { id: 4, name: 'Crispy Fries Basket', price: 42, tag: 'Side' },
-  { id: 5, name: 'Breakfast Combo', price: 95, tag: 'Morning' },
-  { id: 6, name: 'Family Feast Platter', price: 235, tag: 'Sharing' },
+  {
+    id: 1,
+    name: 'Loaded Kota',
+    price: 65,
+    tag: 'Street Favorite',
+    image: 'https://img02.restaurantguru.com/c0a9-Restaurant-22-Chillas-Joint-food.jpg',
+  },
+  {
+    id: 2,
+    name: 'Grilled Chicken Wrap',
+    price: 78,
+    tag: 'Chef Pick',
+    image: 'https://img02.restaurantguru.com/cc7c-Restaurant-Cafe-eden-spring-rolls.jpg',
+  },
+  {
+    id: 3,
+    name: 'Classic Beef Burger',
+    price: 89,
+    tag: 'Top Seller',
+    image: 'https://img02.restaurantguru.com/c0a9-Restaurant-22-Chillas-Joint-food.jpg',
+  },
+  {
+    id: 4,
+    name: 'Crispy Fries Basket',
+    price: 42,
+    tag: 'Side',
+    image: 'https://img02.restaurantguru.com/c0a9-Restaurant-22-Chillas-Joint-food.jpg',
+  },
+  {
+    id: 5,
+    name: 'Breakfast Combo',
+    price: 95,
+    tag: 'Morning',
+    image: 'https://img02.restaurantguru.com/cc7c-Restaurant-Cafe-eden-spring-rolls.jpg',
+  },
+  {
+    id: 6,
+    name: 'Family Feast Platter',
+    price: 235,
+    tag: 'Sharing',
+    image: 'https://img02.restaurantguru.com/c0a9-Restaurant-22-Chillas-Joint-food.jpg',
+  },
+]
+
+const GALLERY = [
+  {
+    id: 'g1',
+    title: 'Signature Meals',
+    image: 'https://img02.restaurantguru.com/c0a9-Restaurant-22-Chillas-Joint-food.jpg',
+  },
+  {
+    id: 'g2',
+    title: 'Chef Specials',
+    image: 'https://img02.restaurantguru.com/cc7c-Restaurant-Cafe-eden-spring-rolls.jpg',
+  },
+  {
+    id: 'g3',
+    title: 'Cafe Eden Space',
+    image: 'https://img02.restaurantguru.com/cb29-Cafe-eden-Pretoria-photo.jpg',
+  },
 ]
 
 const ORDER_WHATSAPP = '27676672270'
@@ -82,8 +136,25 @@ function App() {
       </header>
 
       <section className="menu-grid">
+        <article className="menu-intro">
+          <h2>Real Food. Bright Experience.</h2>
+          <p>
+            Proposal preview using real public photos of Cafe Eden.
+            <br />
+            Prices below are dummy ZAR for proposal only.
+          </p>
+        </article>
+
+        {GALLERY.map((photo) => (
+          <article className="gallery-card" key={photo.id}>
+            <img src={photo.image} alt={photo.title} loading="lazy" />
+            <p>{photo.title}</p>
+          </article>
+        ))}
+
         {MENU.map((item) => (
           <article className="menu-card" key={item.id}>
+            <img className="menu-photo" src={item.image} alt={item.name} loading="lazy" />
             <p className="menu-tag">{item.tag}</p>
             <h3>{item.name}</h3>
             <p className="price">R{item.price}</p>

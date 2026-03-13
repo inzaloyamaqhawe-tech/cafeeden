@@ -92,11 +92,66 @@ h1 {
   gap: 0.9rem;
 }
 
+.menu-intro {
+  grid-column: 1 / -1;
+  background: linear-gradient(90deg, #fff4fd, #eefcff);
+  border: 2px solid #f5c4ff;
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.menu-intro h2 {
+  margin: 0 0 0.25rem;
+  color: #8800c7;
+}
+
+.menu-intro p {
+  margin: 0;
+  color: #6b36a8;
+}
+
+.gallery-card {
+  background: #fff;
+  border: 2px solid #b5ecff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.gallery-card img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.gallery-card p {
+  margin: 0;
+  padding: 0.65rem 0.8rem;
+  color: #0369a1;
+  font-weight: 700;
+}
+
 .menu-card {
   background: #fff;
   border: 2px solid #ffd4ef;
   border-radius: 16px;
-  padding: 1rem;
+  padding: 0;
+  overflow: hidden;
+}
+
+.menu-photo {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.menu-card h3,
+.menu-card .menu-tag,
+.menu-card .price,
+.menu-card .qty-row {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .menu-tag {
@@ -112,7 +167,8 @@ h1 {
 }
 
 .price {
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   color: #0284c7;
   font-weight: 800;
 }
