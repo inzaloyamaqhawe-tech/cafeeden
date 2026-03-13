@@ -1,0 +1,8 @@
+body {
+  margin: 0;
+  font-family: 'Trebuchet MS', 'Segoe UI', Verdana, sans-serif;
+}
+
+#root {
+  min-height: 100svh;
+}
