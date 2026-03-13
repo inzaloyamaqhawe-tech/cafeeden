@@ -129,11 +129,10 @@ function App() {
 
       <header className="hero">
         <div className="hero-copy">
-          <p className="pill">Cafe Eden Proposal</p>
-          <h1>Modern dining website for Cafe Eden.</h1>
+          <p className="pill">Welcome to Cafe Eden</p>
+          <h1>Flavor That Brings People Together.</h1>
           <p className="sub">
-            A professional online presence where customers discover your place, browse the menu,
-            and contact you directly for bookings or orders.
+            Fresh meals, warm service, and a place where every visit feels like home.
           </p>
           <div className="cta-row">
             <a className="btn btn-primary" href={orderLink} target="_blank" rel="noreferrer">
@@ -164,18 +163,10 @@ function App() {
         <article className="menu-intro">
           <h2>Menu Highlights</h2>
           <p>
-            Proposal preview using real public photos of Cafe Eden.
-            <br />
-            Prices below are dummy ZAR for proposal only and can be updated to your final pricing.
+            Explore customer favorites from Cafe Eden.
+            Sample prices are shown in ZAR and can be updated anytime.
           </p>
         </article>
-
-        {GALLERY.map((photo) => (
-          <article className="gallery-card" key={photo.id}>
-            <img src={photo.image} alt={photo.title} loading="lazy" />
-            <p>{photo.title}</p>
-          </article>
-        ))}
 
         {MENU.map((item) => (
           <article className="menu-card" key={item.id}>
