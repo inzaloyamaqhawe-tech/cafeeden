@@ -11,7 +11,7 @@ const MENU = [
   },
   {
     id: 2,
-    name: 'Grilled Chicken Wrap',
+    name: 'Chicken Wrap Deluxe',
     price: 78,
     tag: 'Chef Pick',
     image: 'https://img02.restaurantguru.com/cc7c-Restaurant-Cafe-eden-spring-rolls.jpg',
@@ -21,28 +21,28 @@ const MENU = [
     name: 'Classic Beef Burger',
     price: 89,
     tag: 'Top Seller',
-    image: 'https://img02.restaurantguru.com/c0a9-Restaurant-22-Chillas-Joint-food.jpg',
+    image: 'https://img02.restaurantguru.com/cb29-Cafe-eden-Pretoria-photo.jpg',
   },
   {
     id: 4,
     name: 'Crispy Fries Basket',
     price: 42,
     tag: 'Side',
-    image: 'https://img02.restaurantguru.com/c0a9-Restaurant-22-Chillas-Joint-food.jpg',
+    image: 'https://img02.restaurantguru.com/c2b4-Restaurant-Cafe-eden-facade.jpg',
   },
   {
     id: 5,
     name: 'Breakfast Combo',
     price: 95,
     tag: 'Morning',
-    image: 'https://img02.restaurantguru.com/cc7c-Restaurant-Cafe-eden-spring-rolls.jpg',
+    image: 'https://img02.restaurantguru.com/c685-Restaurant-22-Chillas-Joint-exterior.jpg',
   },
   {
     id: 6,
     name: 'Family Feast Platter',
     price: 235,
     tag: 'Sharing',
-    image: 'https://img02.restaurantguru.com/c0a9-Restaurant-22-Chillas-Joint-food.jpg',
+    image: 'https://img02.restaurantguru.com/c86b-Restaurant-22-Chillas-Joint-photo-1.jpg',
   },
 ]
 
@@ -54,13 +54,18 @@ const GALLERY = [
   },
   {
     id: 'g2',
-    title: 'Chef Specials',
+    title: 'Wraps and Light Meals',
     image: 'https://img02.restaurantguru.com/cc7c-Restaurant-Cafe-eden-spring-rolls.jpg',
   },
   {
     id: 'g3',
-    title: 'Cafe Eden Space',
+    title: 'Cafe Eden Interior',
     image: 'https://img02.restaurantguru.com/cb29-Cafe-eden-Pretoria-photo.jpg',
+  },
+  {
+    id: 'g4',
+    title: 'Outdoor and Entrance',
+    image: 'https://img02.restaurantguru.com/c2b4-Restaurant-Cafe-eden-facade.jpg',
   },
 ]
 
@@ -98,6 +103,7 @@ function App() {
   }, [items, total])
 
   const orderLink = `https://wa.me/${ORDER_WHATSAPP}?text=${encodeURIComponent(orderMessage)}`
+  const quickAskLink = `https://wa.me/${ORDER_WHATSAPP}?text=${encodeURIComponent('Hi Cafe Eden, I would like to ask about today\'s specials and table availability.')}`
   const agencyLink =
     `https://wa.me/${AGENCY_WHATSAPP}?text=` +
     encodeURIComponent('Hi Inzalo Yamaqhawe Technologies, I want to ask about your services.')
@@ -111,19 +117,30 @@ function App() {
 
   return (
     <main className="page">
+      <nav className="topnav">
+        <div className="brand">Cafe Eden</div>
+        <div className="navlinks">
+          <a href="#about">About</a>
+          <a href="#menu">Menu</a>
+          <a href="#atmosphere">Atmosphere</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
       <header className="hero">
         <div className="hero-copy">
           <p className="pill">Cafe Eden Proposal</p>
-          <h1>Bright. Fast. Delicious. Ordered on WhatsApp.</h1>
+          <h1>Modern dining website for Cafe Eden.</h1>
           <p className="sub">
-            Let customers view your place, choose meals, and submit orders instantly to your WhatsApp.
+            A professional online presence where customers discover your place, browse the menu,
+            and contact you directly for bookings or orders.
           </p>
           <div className="cta-row">
             <a className="btn btn-primary" href={orderLink} target="_blank" rel="noreferrer">
-              Order on WhatsApp
+              Request an Order
             </a>
-            <a className="btn btn-soft" href="tel:+27676672270">
-              Call +27 67 667 2270
+            <a className="btn btn-soft" href={quickAskLink} target="_blank" rel="noreferrer">
+              Ask About Specials
             </a>
           </div>
         </div>
@@ -135,13 +152,21 @@ function App() {
         </div>
       </header>
 
-      <section className="menu-grid">
+      <section id="about" className="about">
+        <h2>About Cafe Eden</h2>
+        <p>
+          Cafe Eden is a local Mamelodi favorite known for hearty plates, friendly service, and a
+          welcoming atmosphere for families and friends.
+        </p>
+      </section>
+
+      <section id="menu" className="menu-grid">
         <article className="menu-intro">
-          <h2>Real Food. Bright Experience.</h2>
+          <h2>Menu Highlights</h2>
           <p>
             Proposal preview using real public photos of Cafe Eden.
             <br />
-            Prices below are dummy ZAR for proposal only.
+            Prices below are dummy ZAR for proposal only and can be updated to your final pricing.
           </p>
         </article>
 
@@ -171,11 +196,24 @@ function App() {
         ))}
       </section>
 
-      <section className="checkout">
+      <section id="atmosphere" className="gallery">
+        <h2>Atmosphere and Place</h2>
+        <p>Show customers your food, vibe, and space before they arrive.</p>
+        <div className="gallery-grid">
+          {GALLERY.map((photo) => (
+            <article className="gallery-card" key={photo.id}>
+              <img src={photo.image} alt={photo.title} loading="lazy" />
+              <p>{photo.title}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="checkout" id="contact">
         <div>
-          <h2>Your Order</h2>
+          <h2>Contact and Order</h2>
           {!items.length ? (
-            <p className="empty">Pick meals above to begin your order.</p>
+            <p className="empty">Select items above, then send your request through WhatsApp.</p>
           ) : (
             <ul className="line-items">
               {items.map((item) => (
@@ -190,9 +228,12 @@ function App() {
         <div className="checkout-panel">
           <p className="total">Total: R{total}</p>
           <a className="btn btn-primary wide" href={orderLink} target="_blank" rel="noreferrer">
-            Send Order to WhatsApp
+            Send Order Request
           </a>
-          <p className="hint">Business WhatsApp: +27 67 667 2270</p>
+          <a className="btn btn-soft wide" href="tel:+27676672270">
+            Call +27 67 667 2270
+          </a>
+          <p className="hint">WhatsApp & Phone: +27 67 667 2270</p>
         </div>
       </section>
 
